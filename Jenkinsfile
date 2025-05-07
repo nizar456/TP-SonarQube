@@ -13,8 +13,12 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/nizar456/TP-SonarQube.git' // remplace par ton repo
-            }
+                            git(
+                                url: 'https://github.com/nizar456/TP-SonarQube.git',
+                                credentialsId: 'your-github-credentials', // Add this line
+                                branch: 'main' // Explicitly specify branch
+                            )
+                        }
         }
 
         stage('Build & Test') {
