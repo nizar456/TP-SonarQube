@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/your-username/demo-sonar.git' // remplace par ton repo
+                git 'https://github.com/nizar456/TP-SonarQube.git' // remplace par ton repo
             }
         }
 
