@@ -15,6 +15,9 @@ pipeline {
             steps {
                             git(
                                 url: 'https://github.com/nizar456/TP-SonarQube.git',
+                                credentialsId: 'b636d83f-6803-4d69-9f90-c237672741de', // Use your existing credential ID
+                                branch: 'main'
+
                             )
                         }
         }
