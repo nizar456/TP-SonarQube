@@ -15,27 +15,25 @@ pipeline {
             steps {
                             git(
                                 url: 'https://github.com/nizar456/TP-SonarQube.git',
-                                credentialsId: 'your-github-credentials', // Add this line
-                                branch: 'main' // Explicitly specify branch
                             )
                         }
         }
 
         stage('Build & Test') {
             steps {
-                sh 'mvn clean verify'
+                bat 'mvn clean verify'
             }
         }
 
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    sh '''
-                      mvn sonar:sonar \
-                        -Dsonar.projectKey=demo-sonar \
-                        -Dsonar.login=$SONAR_TOKEN
-                    '''
-                }
+                                    bat """  // Changed from sh to bat for Windows
+                                      mvn sonar:sonar ^
+                                        -Dsonar.projectKey=TP-SonarQube ^
+                                        -Dsonar.login=%SONAR_TOKEN%
+                                    """
+                                }
             }
         }
     }
